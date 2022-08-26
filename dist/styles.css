@@ -5,7 +5,70 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    transition: all 0.3s;
+    font-size: 18px;
 }
-h1{
-    color: red;
+:root {
+    --bg-color: #D1EDE3;
+    --offset: 20px;
+    --link-shadow: rgb(34, 25, 25);
+    --header-color: #FFEDED;
 }
+a{
+    text-decoration: none;
+    color: #000;
+}
+a:hover{
+    font-weight: 700;
+    text-shadow: 0px -1px 2px var(--link-shadow);
+    transition: text-shadow 0.3s;
+}
+.active-link{
+    font-weight: 700;
+    text-shadow: 0px -1px 2px var(--link-shadow);
+    transition: text-shadow 0.3s;
+    
+}
+button{
+    background: none;
+    border: 1p solid #000;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 15px;
+
+}
+.button-aplication:hover{
+    background-color:var(--bg-color);
+    text-shadow: 0px -1px 2px var(--link-shadow);
+}
+.desktop-1{
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 1024px;;
+    background-color: var(--bg-color);
+}
+h2 {
+    font-weight: 700;
+    font-size: 24px;
+}
+h3 {
+    font-weight: 400;
+    font-size: 18px;
+}
+p {
+    font-size: 14px;
+}
+.desktop-center{
+    padding: var(--offset);
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--header-color);
+    padding:10px 20px;
+}
+
