@@ -71,4 +71,7 @@ p {
     background-color: var(--header-color);
     padding:10px 20px;
 }
+main{
+    padding: var(--offset) 0px;
+}
 
