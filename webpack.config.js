@@ -24,7 +24,7 @@ module.exports = {
       directory: path.join(__dirname,'dist') 
     },
     compress:true,
-    port:9000
+    port:4200
   },
   plugins: [
     new HTMLPlugin({
