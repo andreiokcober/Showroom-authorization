@@ -15,6 +15,51 @@
   <script defer src="bundle.js"></script><link href="styles.css" rel="stylesheet"></head>
   <body>
     <div class="desktop-1">
+      <div class="form-SignUp">
+        <div class="form-SignUp-center">
+          <div class="close-form">
+            <svg
+              id="close-svg"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 320 512"
+              width="22px"
+            >
+              <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <path
+                d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+              />
+            </svg>
+          </div>
+          <form action="" id="create-person">
+            <input
+              type="text"
+              name="name"
+              class="input-sign"
+              placeholder="Name"
+            />
+            <input
+              type="text"
+              name="family"
+              class="input-sign"
+              placeholder="Family name"
+            />
+            <input
+              type="password"
+              name="password"
+              min="10"
+              max="15"
+              class="input-sign"
+              placeholder="password"
+            />
+            <input
+              type="submit"
+              id="input-submit-signUp"
+              class="input-submit"
+              value="SignUp"
+            />
+          </form>
+        </div>
+      </div>
       <div class="desktop-center">
         <header class="header">
           <div class="desktop-title">
@@ -27,24 +72,69 @@
             <a href="#">SHOES</a>
           </div>
           <div class="desktop-authorization">
-            <button type="submit" class="button-aplication">Sign Up</button>
+            <button type="submit" class="button-aplication" id="SignUP">
+              Sign Up
+            </button>
             <button type="submit" class="button-aplication">Sign In</button>
           </div>
         </header>
         <main>
           <div class="main-img">
-            <img
-              src="./src/asset/image 1.png"
-              alt="dress-img"
-              class="dress-img"
-            />
-            <img src="./asset/image 2.png" alt="dress-img" class="dress-img" />
-            <img src="./asset/image 3.png" alt="dress-img" class="dress-img" />
+            <div>
+              <img
+                src="./asset/image 1.png"
+                alt="dress-img"
+                class="dress-img"
+              />
+            </div>
+            <div>
+              <img
+                src="./asset/image 2.png"
+                alt="dress-img"
+                class="dress-img"
+              />
+            </div>
+            <div>
+              <img
+                src="./asset/image 3.png"
+                alt="dress-img"
+                class="dress-img"
+              />
+            </div>
           </div>
         </main>
         <footer class="footer">
-          <div class="footer-left"></div>
-          <div class="footer-right"></div>
+          <div class="footer-left">
+            <h2>Showroom</h2>
+            <p>© 2010 — 2022</p>
+            <p>Privacy — Terms</p>
+          </div>
+          <div class="footer-right">
+            <div class="footer-right-item">
+              <h3>Product</h3>
+              <a href="#" class="footer-link">DRESSES</a>
+              <a href="#" class="footer-link">SHOES</a>
+              <a href="#" class="footer-link">ANY</a>
+            </div>
+            <div class="footer-right-item">
+              <h3>Features</h3>
+              <a href="#" class="footer-link">Feature</a>
+              <a href="#" class="footer-link">Feature</a>
+              <a href="#" class="footer-link">Feature</a>
+            </div>
+            <div class="footer-right-item">
+              <h3>Resources</h3>
+              <a href="#" class="footer-link">Find in VK</a>
+              <a href="#" class="footer-link">Find in Insta</a>
+              <a href="#" class="footer-link">Find in the city</a>
+            </div>
+            <div class="footer-right-item">
+              <h3>Company</h3>
+              <a href="#" class="footer-link">Chebcompany</a>
+              <a href="#" class="footer-link">Chebgroup</a>
+              <a href="#" class="footer-link">Chebassosiation</a>
+            </div>
+          </div>
         </footer>
       </div>
     </div>
