@@ -60,4 +60,12 @@ h3 {
 p {
     font-size: 14px;
 }
-
+.invalid{
+    border:1px solid red;
+}
+.invalid-text{
+    color: red;
+}
+.form-control{
+    width: 350px;
+}

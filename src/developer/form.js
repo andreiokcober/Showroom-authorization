@@ -10,7 +10,11 @@ export class Form {
       })
       return value
     }
-
+    clear(){
+        Object.keys(this.controls).forEach((control)=>{
+            this.form[control].value = ''
+      })
+    }
     isValid(){
         let isFormValid = true
 
@@ -25,7 +29,7 @@ export class Form {
                     clearFormControl(this.form[control])
                 }
                 else{
-                    
+                    setError(this.form[control])
                 }
                 isFormValid = isFormValid && isValid
         })
@@ -33,6 +37,17 @@ export class Form {
     }
 }
 
-function clearFormControl($control){
-    $control.value = ''
+export function clearFormControl($control){
+    $control.classList.remove('invalid')
+    if($control.nextSibling){
+        $control.closest('.form-control').removeChild($control.nextSibling)
+    }
 }   
+
+function setError($control){
+    clearFormControl($control)
+   $control.classList.add('invalid')
+   const err = `<p class="invalid-text">Введите коректное значение</p>`
+   $control.insertAdjacentHTML('afterend',err)
+   
+}

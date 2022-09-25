@@ -1,5 +1,8 @@
 import { Validators } from "./Validators"
 import { Form } from "./form"
+import { clearFormControl } from "./form"
+import { apiServise } from "./service/apiService"
+
 const SignUP = document.querySelector('#SignUP')
 const formSignUp = document.querySelector('.form-SignUp')
 const body = document.querySelector('body')
@@ -15,29 +18,36 @@ inputSubmitSignUp.addEventListener('click',linkSaveForm)
 export function linkSignUp(event){
   event.preventDefault()
   formSignUp.style.display='flex'
-  body.style.overflow = 'hidden'
- 
+  body.style.overflow = 'hidden'   
+//  document.querySelector('.form-SignUp').insertAdjacentHTML('afterbegin',html)
 }
 export function linkBtnClose(event){
     event.preventDefault()  
-   if(event.target.tagName.toLowerCase() === "path") {
     formSignUp.style.display='none'
     body.style.overflow = ''
-   }
+    for(let key of createPerson){
+       if(key.classList.contains('input-sign')) {
+        key.value = ''
+        clearFormControl(key)
+       }
+    }
 }
 
-export function linkSaveForm(event){
+export async function linkSaveForm(event){
     event.preventDefault()
-    // const name = createPerson.name.value
-    // const familyName = createPerson.family.value 
-    // const password = createPerson.password.value
     const person = new Form (createPerson, {
-        name:[Validators.required],
-        family:[Validators.required],
+        email:[Validators.required],
         password:[Validators.minLength(8)]
     })
     if(person.isValid()) {
-        console.log('form is valid')
+        const formPerson = {
+            date:new Date().toLocaleDateString(),
+            ...person.value()
+        }
+        await apiServise.createPerson(formPerson)
+        person.clear()
+        
+        
     }
 
 }
