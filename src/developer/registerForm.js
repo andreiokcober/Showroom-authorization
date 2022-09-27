@@ -1,29 +1,41 @@
 import { Validators } from "./Validators"
 import { Form } from "./form"
 import { clearFormControl } from "./form"
-import { apiServise } from "./service/apiService"
 import { newPersonWithForm } from ".."
+import { authPersonWithForm } from ".."
 
 const SignUP = document.querySelector('#SignUP')
-const formSignUp = document.querySelector('.form-SignUp')
+const formAuth = document.querySelector('.form-auth')
 const body = document.querySelector('body')
 const closeBtn = document.querySelector('.close-form')
 const inputSubmitSignUp = document.querySelector('#input-submit-signUp')
+const inputSubmitSignIn = document.querySelector('#input-submit-signIn')
 const createPerson = document.querySelector('#create-person')
+const buttonFormSignIn = document.querySelector('#SignIn-form')
 
-SignUP.addEventListener('click',linkSignUp)
+SignUP.addEventListener('click',linkButtonSignUp)
 closeBtn.addEventListener('click',linkBtnClose)
-inputSubmitSignUp.addEventListener('click',linkSaveForm)
+inputSubmitSignUp.addEventListener('click',clickButtonForm)
+inputSubmitSignIn.addEventListener('click',clickButtonForm)
+buttonFormSignIn.addEventListener('click',linkSignIn)
 
- function linkSignUp(event){
+
+ function linkButtonSignUp(event){
   event.preventDefault()
-  formSignUp.style.display='flex'
+  formAuth.style.display='flex'
   body.style.overflow = 'hidden'   
-//  document.querySelector('.form-SignUp').insertAdjacentHTML('afterbegin',html)
+  choiseButton(event)
+}
+
+function linkSignIn(event){
+    event.preventDefault()
+    formAuth.style.display='flex'
+    body.style.overflow = 'hidden'  
+    choiseButton(event) 
 }
  function linkBtnClose(event){
     event.preventDefault()  
-    formSignUp.style.display='none'
+    formAuth.style.display='none'
     body.style.overflow = ''
     for(let key of createPerson){
        if(key.classList.contains('input-sign')) {
@@ -33,7 +45,7 @@ inputSubmitSignUp.addEventListener('click',linkSaveForm)
     }
 }
 
- async function linkSaveForm(event){
+ async function clickButtonForm(event){
     event.preventDefault()
     const person = new Form (createPerson, {
         email:[Validators.required],
@@ -44,13 +56,24 @@ inputSubmitSignUp.addEventListener('click',linkSaveForm)
             date:new Date().toLocaleDateString(),
             ...person.value()
         }
-        newPersonWithForm(formPerson)
-        // await apiServise.createPerson(formPerson)
-        person.clear() 
-           
+        if(event.target.id.toLowerCase() === 'input-submit-signup'){
+            newPersonWithForm(formPerson)
+        } else if(event.target.id.toLowerCase() === 'input-submit-signin') {
+            authPersonWithForm(formPerson)
+        }
+        
+          person.clear() 
     }
-    
+}
 
+function choiseButton(event){
+    if(event.target.id.toLowerCase() === 'signin-form') {
+    inputSubmitSignUp.style.display = 'none'
+    inputSubmitSignIn.style.display = 'inline-block'  
+   } else{
+    inputSubmitSignUp.style.display = 'inline-block'
+    inputSubmitSignIn.style.display = 'none' 
+   }
 }
 
 

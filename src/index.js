@@ -1,9 +1,8 @@
 import './styles.css';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 import {} from "./developer/registerForm";
-import {} from "./developer/signIn";
 
 
 const firebaseConfig = {
@@ -19,17 +18,23 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const auth = getAuth();
 
 
 export function newPersonWithForm(newPerson){
+ 
+  
   const email = newPerson.email
   const password = newPerson.password
 
-  const auth = getAuth();
+
+
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
+    
+    console.log(user)
     alert('Вы успешно зарегистрировались')
     // ...
   })
@@ -40,6 +45,26 @@ export function newPersonWithForm(newPerson){
     alert('такой адресс уже используется')
     // ..
   });
+
+}
+
+export function authPersonWithForm(newPerson){
+  const email = newPerson.email
+  const password = newPerson.password
+
+  signInWithEmailAndPassword(auth,email,password)
+    .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log('Вошли в систему')
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage)
+  });
+  
 }
 
 
