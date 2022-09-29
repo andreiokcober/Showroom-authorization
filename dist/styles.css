@@ -63,7 +63,7 @@ main {
 /*!***************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/formSign.css ***!
   \***************************************************************************/
-.form-SignUp{
+.form-auth{
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -74,7 +74,7 @@ main {
     align-items:center;
     display:none;
 }
-.form-SignUp-center{
+.form-auth-center{
     width: 400px;
     height: 350px;
     background:var(--footer-color);
@@ -189,5 +189,13 @@ h3 {
 p {
     font-size: 14px;
 }
-
+.invalid{
+    border:1px solid red;
+}
+.invalid-text{
+    color: red;
+}
+.form-control{
+    width: 350px;
+}
 

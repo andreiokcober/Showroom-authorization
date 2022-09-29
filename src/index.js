@@ -1,6 +1,7 @@
 import './styles.css';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getDatabase, ref,set } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 import {} from "./developer/registerForm";
 
@@ -19,6 +20,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth();
+const database = getDatabase(app);
 
 
 export function newPersonWithForm(newPerson){
@@ -26,6 +28,8 @@ export function newPersonWithForm(newPerson){
   
   const email = newPerson.email
   const password = newPerson.password
+  const name = newPerson.name
+  
 
 
 
@@ -33,8 +37,9 @@ export function newPersonWithForm(newPerson){
     .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    
-    console.log(user)
+    const userId = user.uid
+
+    writeUserData(userId,email,name)
     alert('Вы успешно зарегистрировались')
     // ...
   })
@@ -67,4 +72,12 @@ export function authPersonWithForm(newPerson){
   
 }
 
+
+function writeUserData(userId,email,name){
+   const db = getDatabase();
+   set(ref(db, 'users/' + userId), {
+    username:name,
+    email:email,
+   })
+}
 

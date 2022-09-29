@@ -1,4 +1,4 @@
-.form-SignUp{
+.form-auth{
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -9,7 +9,7 @@
     align-items:center;
     display:none;
 }
-.form-SignUp-center{
+.form-auth-center{
     width: 400px;
     height: 350px;
     background:var(--footer-color);

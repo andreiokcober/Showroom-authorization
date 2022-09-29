@@ -12,6 +12,7 @@ const inputSubmitSignUp = document.querySelector('#input-submit-signUp')
 const inputSubmitSignIn = document.querySelector('#input-submit-signIn')
 const createPerson = document.querySelector('#create-person')
 const buttonFormSignIn = document.querySelector('#SignIn-form')
+const itemBaseForm = document.querySelectorAll('.input-base')
 
 SignUP.addEventListener('click',linkButtonSignUp)
 closeBtn.addEventListener('click',linkBtnClose)
@@ -20,23 +21,32 @@ inputSubmitSignIn.addEventListener('click',clickButtonForm)
 buttonFormSignIn.addEventListener('click',linkSignIn)
 
 
+
  function linkButtonSignUp(event){
   event.preventDefault()
   formAuth.style.display='flex'
-  body.style.overflow = 'hidden'   
+  body.style.overflow = 'hidden'
+  for(let i of itemBaseForm){
+    i.style.display = 'inline-block'
+    i.closest('.form-control').style.display = 'block'
+    }
   choiseButton(event)
 }
 
 function linkSignIn(event){
     event.preventDefault()
     formAuth.style.display='flex'
-    body.style.overflow = 'hidden'  
+    body.style.overflow = 'hidden' 
+    for(let i of itemBaseForm){
+    i.style.display = 'none'
+    i.closest('.form-control').style.display = 'none'
+    }   
     choiseButton(event) 
 }
  function linkBtnClose(event){
     event.preventDefault()  
     formAuth.style.display='none'
-    body.style.overflow = ''
+    body.style.overflow = '' 
     for(let key of createPerson){
        if(key.classList.contains('input-sign')) {
         key.value = ''
@@ -47,10 +57,8 @@ function linkSignIn(event){
 
  async function clickButtonForm(event){
     event.preventDefault()
-    const person = new Form (createPerson, {
-        email:[Validators.required],
-        password:[Validators.minLength(8)]
-    })
+   const person =  corection(event)
+  
     if(person.isValid()) {
          const formPerson = {
             date:new Date().toLocaleDateString(),
@@ -63,7 +71,28 @@ function linkSignIn(event){
         }
         
           person.clear() 
-    }
+    }  
+}
+
+function corection(event){
+if(event.target.dataset.auth){
+            const person = new Form (createPerson, {
+             email:[Validators.required],
+             password:[Validators.minLength(8)]
+            
+        })
+         return person
+       
+    } else {
+            const person = new Form (createPerson, {
+             email:[Validators.required],
+             password:[Validators.minLength(8)],
+             name:[Validators.required]
+            
+        })
+         return person
+    } 
+   
 }
 
 function choiseButton(event){

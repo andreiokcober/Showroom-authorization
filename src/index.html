@@ -15,8 +15,8 @@
   </head>
   <body>
     <div class="desktop-1">
-      <div class="form-SignUp">
-        <div class="form-SignUp-center">
+      <div class="form-auth">
+        <div class="form-auth-center">
           <div class="close-form">
             <svg
               id="close-svg"
@@ -31,6 +31,14 @@
             </svg>
           </div>
           <form action="" id="create-person">
+            <div class="form-control">
+              <input
+                type="name"
+                name="name"
+                class="input-sign input-base"
+                placeholder="Введите имя"
+              />
+            </div>
             <div class="form-control">
               <input
                 type="email"
@@ -49,12 +57,32 @@
                 placeholder="password"
               />
             </div>
-            <input
+            <a
+              href=""
+              id="input-submit-signUp"
+              class="input-submit"
+              data-register="true"
+              >SignUp</a
+            >
+            <a
+              href=""
+              id="input-submit-signIn"
+              class="input-submit"
+              data-auth="true"
+              >SignIn</a
+            >
+            <!-- <input
               type="submit"
               id="input-submit-signUp"
               class="input-submit"
               value="SignUp"
-            />
+            /> -->
+            <!-- <input
+              type="submit"
+              id="input-submit-signIn"
+              class="input-submit"
+              value="SignIn"
+            /> -->
           </form>
         </div>
       </div>
