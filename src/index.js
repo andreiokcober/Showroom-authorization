@@ -4,6 +4,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref,set } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 import {} from "./developer/registerForm";
+import {} from "./developer/inSystems"
 
 
 const firebaseConfig = {

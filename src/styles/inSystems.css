@@ -1,0 +1,28 @@
+.userToolsToogle{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 32px 8px 8px;
+    border-radius: 80px;
+    background: transparent;
+    cursor: pointer;
+    transition: .2s ease;
+}
+.userToolsToogle:hover{
+    background-color: var(--bg-color);
+    
+}
+.userToolsIcon{
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-right: 2px
+}
+.userToolsToogle::before{
+    content: " ";
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    border: 4px solid transparent;
+    border-top: 5px solid;
+}
