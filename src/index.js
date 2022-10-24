@@ -3,8 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref,set } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
-import {} from "./developer/registerForm";
-import {} from "./developer/inSystems"
+import { openBody } from './developer/registerForm';
+import {renderInSystems} from "./developer/inSystems"
 
 
 const firebaseConfig = {
@@ -42,6 +42,10 @@ export function newPersonWithForm(newPerson){
 
     writeUserData(userId,email,name)
     alert('Вы успешно зарегистрировались')
+    openBody()
+    renderInSystems(name,email)
+       
+    
     // ...
   })
   .catch((error) => {
@@ -62,7 +66,8 @@ export function authPersonWithForm(newPerson){
     .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log('Вошли в систему')
+    alert('Вы успешно зашли в ситему')
+     
     // ...
   })
   .catch((error) => {

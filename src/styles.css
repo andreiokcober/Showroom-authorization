@@ -10,6 +10,9 @@
     transition: all 0.3s;
     font-size: 18px;
 }
+span{
+    display: block;
+}
 img{
     max-width: 100%;
 }
@@ -69,4 +72,10 @@ p {
 }
 .form-control{
     width: 350px;
+}
+.show{
+    display: block;
+}
+.hide{
+    display: none;
 }

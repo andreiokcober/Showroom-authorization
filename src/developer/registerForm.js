@@ -5,8 +5,8 @@ import { newPersonWithForm } from ".."
 import { authPersonWithForm } from ".."
 
 const SignUP = document.querySelector('#SignUP')
-const formAuth = document.querySelector('.form-auth')
-const body = document.querySelector('body')
+export const formAuth = document.querySelector('.form-auth')
+export const body = document.querySelector('body')
 const closeBtn = document.querySelector('.close-form')
 const inputSubmitSignUp = document.querySelector('#input-submit-signUp')
 const inputSubmitSignIn = document.querySelector('#input-submit-signIn')
@@ -33,10 +33,9 @@ buttonFormSignIn.addEventListener('click',linkSignIn)
   choiseButton(event)
 }
 
-function linkSignIn(event){
+export function linkSignIn(event){
     event.preventDefault()
-    formAuth.style.display='flex'
-    body.style.overflow = 'hidden' 
+    closeBody() 
     for(let i of itemBaseForm){
     i.style.display = 'none'
     i.closest('.form-control').style.display = 'none'
@@ -45,14 +44,22 @@ function linkSignIn(event){
 }
  function linkBtnClose(event){
     event.preventDefault()  
-    formAuth.style.display='none'
-    body.style.overflow = '' 
+    openBody()
     for(let key of createPerson){
        if(key.classList.contains('input-sign')) {
         key.value = ''
         clearFormControl(key)
        }
     }
+}
+
+export function openBody(){
+    formAuth.style.display='none'
+    body.style.overflow = ''
+}
+function closeBody(){
+    formAuth.style.display='flex'
+    body.style.overflow = 'hidden' 
 }
 
  async function clickButtonForm(event){

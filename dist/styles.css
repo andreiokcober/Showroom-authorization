@@ -126,6 +126,60 @@ text-align: center;
 }
 
 
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/inSystems.css ***!
+  \****************************************************************************/
+.userToolsToogle{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 32px 8px 8px;
+    border-radius: 80px;
+    background: transparent;
+    cursor: pointer;
+    transition: .2s ease;
+}
+.userToolsToogle:hover{
+    background-color: var(--bg-color);
+    
+}
+.userToolsIcon{
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-right: 2px
+}
+.userToolsToogle::before{
+    content: " ";
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    border: 4px solid transparent;
+    border-top: 5px solid;
+}
+.userToolsToogle:active .userToolsToogle::before{
+    top: 13px;
+    border: 4px solid transparent;
+    border-bottom: 5px solid;
+}
+.person-acount{
+    position: relative;
+}
+.person-ak-text{
+    position: absolute;
+    top:65px;
+    left: -50px;
+    background:#fff;
+    height: 200px;
+    width: 200px;
+    border-radius:5px;
+    text-align: center;
+    padding: 10px 5px;
+    
+}
+.buttonExit{
+    margin-top:15px
+}
 /*!******************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles.css ***!
   \******************************************************************/
@@ -137,6 +191,9 @@ text-align: center;
     font-weight: 400;
     transition: all 0.3s;
     font-size: 18px;
+}
+span{
+    display: block;
 }
 img{
     max-width: 100%;
@@ -197,5 +254,11 @@ p {
 }
 .form-control{
     width: 350px;
+}
+.show{
+    display: block;
+}
+.hide{
+    display: none;
 }
 
