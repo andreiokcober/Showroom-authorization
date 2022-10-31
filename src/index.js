@@ -5,7 +5,7 @@ import { getDatabase, ref,set } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 import { openBody } from './developer/registerForm';
 import {renderInSystems} from "./developer/inSystems"
-
+import {loadName} from "./developer/asyncFetch"
 
 const firebaseConfig = {
   apiKey: "AIzaSyCSMcWipvT2Px25VhQI84MO8uoC7EpSzpg",
@@ -25,15 +25,10 @@ const database = getDatabase(app);
 
 
 export function newPersonWithForm(newPerson){
- 
-  
+
   const email = newPerson.email
   const password = newPerson.password
   const name = newPerson.name
-  
-
-
-
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     // Signed in 
@@ -44,8 +39,6 @@ export function newPersonWithForm(newPerson){
     alert('Вы успешно зарегистрировались')
     openBody()
     renderInSystems(name,email)
-       
-    
     // ...
   })
   .catch((error) => {
@@ -66,14 +59,18 @@ export function authPersonWithForm(newPerson){
     .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
+    const uid = user.uid
+
     alert('Вы успешно зашли в ситему')
-     
+    openBody() 
+    loadName(uid)  
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorMessage)
+    alert('Неверный логин или пароль')
+
   });
   
 }

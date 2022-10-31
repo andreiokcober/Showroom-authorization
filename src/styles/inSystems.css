@@ -49,3 +49,9 @@
 .buttonExit{
     margin-top:15px
 }
+.buttonExit:hover{
+    background-color: var(--bg-color);
+}
+.user-email{
+    font-size: 13px;
+}
