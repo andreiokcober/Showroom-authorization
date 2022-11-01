@@ -57,7 +57,7 @@ export function openBody(){
     formAuth.style.display='none'
     body.style.overflow = ''
 }
-function closeBody(){
+export function closeBody(){
     formAuth.style.display='flex'
     body.style.overflow = 'hidden' 
 }

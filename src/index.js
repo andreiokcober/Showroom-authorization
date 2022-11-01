@@ -4,8 +4,9 @@ import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref,set } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 import { openBody } from './developer/registerForm';
-import {renderInSystems} from "./developer/inSystems"
+import {renderInSystems,localVizit} from "./developer/inSystems"
 import {loadName} from "./developer/asyncFetch"
+import {} from "./developer/localStore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyCSMcWipvT2Px25VhQI84MO8uoC7EpSzpg",
@@ -24,7 +25,7 @@ const auth = getAuth();
 const database = getDatabase(app);
 
 
-export function newPersonWithForm(newPerson){
+export async function newPersonWithForm(newPerson){
 
   const email = newPerson.email
   const password = newPerson.password
@@ -33,12 +34,16 @@ export function newPersonWithForm(newPerson){
     .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    const userId = user.uid
+    const uid = user.uid
 
-    writeUserData(userId,email,name)
+  writeUserData(uid,email,name)
     alert('Вы успешно зарегистрировались')
-    openBody()
-    renderInSystems(name,email)
+    localStorage.setItem('vizit',true)
+    localStorage.setItem('localId', `${uid}`)
+      openBody()
+      loadName(uid)
+    
+    
     // ...
   })
   .catch((error) => {
@@ -51,7 +56,7 @@ export function newPersonWithForm(newPerson){
 
 }
 
-export function authPersonWithForm(newPerson){
+export  function authPersonWithForm(newPerson){
   const email = newPerson.email
   const password = newPerson.password
 
@@ -62,8 +67,11 @@ export function authPersonWithForm(newPerson){
     const uid = user.uid
 
     alert('Вы успешно зашли в ситему')
+    localStorage.setItem('vizit',true)
     openBody() 
     loadName(uid)  
+  
+    
     // ...
   })
   .catch((error) => {
@@ -76,9 +84,9 @@ export function authPersonWithForm(newPerson){
 }
 
 
-function writeUserData(userId,email,name){
+function  writeUserData(uid,email,name){
    const db = getDatabase();
-   set(ref(db, 'users/' + userId), {
+   set(ref(db, 'users/' + uid), {
     username:name,
     email:email,
    })
