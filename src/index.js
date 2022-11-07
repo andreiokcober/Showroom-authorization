@@ -24,7 +24,6 @@ const analytics = getAnalytics(app);
 const auth = getAuth();
 const database = getDatabase(app);
 
-
 export async function newPersonWithForm(newPerson){
 
   const email = newPerson.email
@@ -36,15 +35,11 @@ export async function newPersonWithForm(newPerson){
     const user = userCredential.user;
     const uid = user.uid
 
-  writeUserData(uid,email,name)
+   writeUserData(uid,email,name)
     alert('Вы успешно зарегистрировались')
     localStorage.setItem('vizit',true)
-    localStorage.setItem('localId', `${uid}`)
-      openBody()
-      loadName(uid)
-    
-    
-    // ...
+    openBody()
+   renderInSystems(name,email,uid)
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -55,7 +50,6 @@ export async function newPersonWithForm(newPerson){
   });
 
 }
-
 export  function authPersonWithForm(newPerson){
   const email = newPerson.email
   const password = newPerson.password
@@ -70,9 +64,6 @@ export  function authPersonWithForm(newPerson){
     localStorage.setItem('vizit',true)
     openBody() 
     loadName(uid)  
-  
-    
-    // ...
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -82,8 +73,6 @@ export  function authPersonWithForm(newPerson){
   });
   
 }
-
-
 function  writeUserData(uid,email,name){
    const db = getDatabase();
    set(ref(db, 'users/' + uid), {
